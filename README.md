@@ -1,2 +1,2 @@
-FRONT-END-URL:https://expence-tracker-front-km8i3iup0-batuuschs-projects.vercel.app/
+FRONT-END-URL:  https://expence-tracker-front-aywvdpbau-batuuschs-projects.vercel.app/
 BACK-END-URL:
