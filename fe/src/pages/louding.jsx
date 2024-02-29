@@ -1,4 +1,4 @@
-export default function louding() {
+export default function Louding() {
   return (
     <main className="w-[100vw] h-[100vh] flex justify-center items-center">
       <div className=" flex flex-col gap-5">
