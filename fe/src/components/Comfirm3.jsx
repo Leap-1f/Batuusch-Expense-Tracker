@@ -5,7 +5,7 @@ export default function Comfirm3() {
         {" "}
         <div className="flex flex-col gap-[50px]">
           <div className="flex justify-center gap-2">
-            <img src="./Vector.apng" alt="" />
+            <img src="./Vector.png" alt="" />
             <h1 className="text-3xl font-bold">Geld</h1>
           </div>
           <ul className="steps">

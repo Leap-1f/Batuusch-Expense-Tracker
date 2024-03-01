@@ -5,7 +5,7 @@ export default function Comfirm1({ confrimBtn }) {
         {" "}
         <div className="flex flex-col gap-[50px]">
           <div className="flex justify-center gap-2">
-            <img src="./Vector.apng" alt="" />
+            <img src="./Vector.png" alt="" />
             <h1 className="text-3xl font-bold">Geld</h1>
           </div>
           <ul className="steps">
@@ -27,9 +27,10 @@ export default function Comfirm1({ confrimBtn }) {
                 <option disabled selected>
                   MNT - Mongolian Tugrik
                 </option>
-                <option>$ - USA dollar</option>
+                <option>CNY - China Yuan</option>
                 <option> MNT - Mongolian Tugrik</option>
-                <option>$ - USA dollar</option>
+                <option>USD - USA Dollar</option>
+                <option>JPY - Japan Yen</option>
               </select>
             </div>
             <p className="text-sm">
