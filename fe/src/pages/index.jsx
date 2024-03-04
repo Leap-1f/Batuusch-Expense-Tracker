@@ -13,7 +13,7 @@ export default function Home() {
   useEffect(() => {
     getData();
   }, [email, password]);
-  console.log(data);
+  console.log(allData);
   const confirmData = () => {
     allData.forEach((el) => {
       if (el.email == email && el.password == password) {
