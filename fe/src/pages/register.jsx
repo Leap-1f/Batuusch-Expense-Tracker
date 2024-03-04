@@ -8,7 +8,7 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
   const getData = async () => {
-    const response = await fetch("http://localhost:8080");
+    const response = await fetch("http://localhost:8080/users");
     const data = await response.json();
     console.log(data);
     setAllData(data);
@@ -16,7 +16,7 @@ export default function Register() {
 
   const PostData = async () => {
     if (rePassword == password) {
-      const response = await fetch("http://localhost:8080", {
+      const response = await fetch("http://localhost:8080/users/addData", {
         method: `POST`,
         mode: "cors",
         headers: {

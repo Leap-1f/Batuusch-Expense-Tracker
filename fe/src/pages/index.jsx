@@ -1,3 +1,4 @@
+import { data } from "autoprefixer";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 export default function Home() {
@@ -5,13 +6,14 @@ export default function Home() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const getData = async () => {
-    const response = await fetch("http://localhost:8080");
+    const response = await fetch("http://localhost:8080/users");
     const data = await response.json();
     setAllData(data);
   };
   useEffect(() => {
     getData();
   }, [email, password]);
+  console.log(data);
   const confirmData = () => {
     allData.forEach((el) => {
       if (el.email == email && el.password == password) {
