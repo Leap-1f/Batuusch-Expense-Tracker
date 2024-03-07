@@ -1,32 +1,36 @@
 import Link from "next/link";
-import { v4 as uuidv4 } from "uuid";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 export default function Register() {
   const [allData, setAllData] = useState({ name: "", email: "", password: "" });
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [rePassword, setRePassword] = useState("");
+  const { push, reload } = useRouter();
   const getData = async () => {
     const response = await fetch("http://localhost:8080/users");
     const data = await response.json();
-    console.log(data);
     setAllData(data);
   };
 
-  const PostData = async () => {
+  const PostData = async (event) => {
+    event.preventDefault();
+
     if (rePassword == password) {
-      const response = await fetch("http://localhost:8080/users/addData", {
+      const response = await fetch("http://localhost:8080/users/signup", {
         method: `POST`,
         mode: "cors",
         headers: {
           Accept: "application/json, text/plain, */*",
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({ name, email, password, id: uuidv4() }), // to pass an
+        body: JSON.stringify({ name, email, password }),
       });
+      push("/");
     } else {
-      alert("Passwords do not match");
+      reload("/register");
+      console.log("aldaa");
     }
   };
   useEffect(() => {
@@ -47,11 +51,7 @@ export default function Register() {
               <p>Sign up below to create your Wallet account</p>
             </div>
           </div>
-          <form
-            action="/login"
-            method="post"
-            className="mt-7 flex flex-col gap-4"
-          >
+          <form method="post" className="mt-7 flex flex-col gap-4">
             <input
               onChange={(event) => setName(event.target.value)}
               type="text"
@@ -80,19 +80,19 @@ export default function Register() {
               placeholder="Re-Password"
               className="w-full bg-slate-100 py-2 rounded-md px-2 border border-[#D1D5DB]"
             />
-            <Link href={"./comfirm"}>
-              <button
-                onClick={PostData}
-                className="btn btn-primary min-w-[280px] text-xl"
-              >
-                Sign up
-              </button>
-            </Link>
+            <button
+              onClick={PostData}
+              className="btn btn-primary min-w-[280px] text-xl"
+            >
+              Sign up
+            </button>
           </form>
-          <div className="flex gap-3 justify-center mt-3">
-            <p className="cursor-pointer">Already have account?</p>
-            <p className="cursor-pointer text-blue-400">Log in</p>
-          </div>
+          <Link href="/">
+            <div className="flex gap-3 justify-center mt-3">
+              <p className="cursor-pointer">Already have account?</p>
+              <p className="cursor-pointer text-blue-400">Log in</p>
+            </div>
+          </Link>
         </div>
       </div>
 

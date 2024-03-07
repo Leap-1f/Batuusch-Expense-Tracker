@@ -15,13 +15,10 @@ export default function Home() {
   }, [email, password]);
   console.log(allData);
   const confirmData = () => {
-    allData.forEach((el) => {
-      if (el.email == email && el.password == password) {
-        console.log("taarsan");
-      } else {
-        console.log("taaraagui");
-      }
-    });
+    const filtredData = allData.filter((el)=>{
+      return el.email === email && el.password === password;
+    })
+    console.log(filtredData);
   };
   return (
     <main className="w-full flex ">
@@ -42,7 +39,6 @@ export default function Home() {
           </div>
           <form
             // onSubmit={getData}
-            action="/login"
             method="post"
             className="mt-7 flex flex-col gap-4"
           >
