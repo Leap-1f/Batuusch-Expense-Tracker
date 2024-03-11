@@ -1,4 +1,4 @@
-export default function Comfirm1({ confrimBtn }) {
+export default function Comfirm1({ confirmBtn }) {
   return (
     <main className="flex justify-center">
       <div className="flex flex-col gap-[200px] mt-20 w-[300px]">
@@ -27,10 +27,10 @@ export default function Comfirm1({ confrimBtn }) {
                 <option disabled selected>
                   MNT - Mongolian Tugrik
                 </option>
-                <option>CNY - China Yuan</option>
-                <option> MNT - Mongolian Tugrik</option>
-                <option>USD - USA Dollar</option>
-                <option>JPY - Japan Yen</option>
+                <option value={"CNY"}>CNY - China Yuan</option>
+                <option value={"MNT"}> MNT - Mongolian Tugrik</option>
+                <option value={"USD"}>USD - USA Dollar</option>
+                <option value={"JPY"}>JPY - Japan Yen</option>
               </select>
             </div>
             <p className="text-sm">
@@ -39,7 +39,7 @@ export default function Comfirm1({ confrimBtn }) {
               one{" "}
             </p>
 
-            <button onClick={confrimBtn} className="btn btn-primary w-full">
+            <button onClick={confirmBtn} className="btn btn-primary w-full">
               Confirm
             </button>
           </div>

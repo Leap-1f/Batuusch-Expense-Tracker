@@ -1,4 +1,9 @@
+import { useRouter } from "next/router";
 export default function Comfirm3() {
+  const { push, reload } = useRouter();
+  const  handleClick = () => {
+    push("/dashboard")
+  }
   return (
     <main className="flex justify-center">
       <div className="flex flex-col gap-[200px] mt-20 w-[300px]">
@@ -28,7 +33,7 @@ export default function Comfirm3() {
               dashboard and start tracking
             </p>
 
-            <button className="btn btn-primary w-full">Go to Dashboard</button>
+            <button onClick={handleClick} className="btn btn-primary w-full">Go to Dashboard</button>
           </div>
         </div>
       </div>

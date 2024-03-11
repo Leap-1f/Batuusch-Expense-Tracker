@@ -1,6 +1,8 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
+import * as Yup from "yup";
+import { userSchema } from "../components/validation.js";
 export default function Register() {
   const [allData, setAllData] = useState({ name: "", email: "", password: "" });
   const [name, setName] = useState("");
@@ -13,11 +15,19 @@ export default function Register() {
     const data = await response.json();
     setAllData(data);
   };
-
+  useEffect(() => {
+    getData();
+  }, []);
   const PostData = async (event) => {
     event.preventDefault();
-
-    if (rePassword == password) {
+    let formData = {
+      name: name,
+      email: email,
+      password: password,
+    };
+    const isValid = await userSchema.isValid(formData);
+    const emails = allData.map((el) => el.email);
+    if (rePassword == password && isValid === true && !emails.includes(email)) {
       const response = await fetch("http://localhost:8080/users/signup", {
         method: `POST`,
         mode: "cors",
@@ -27,15 +37,13 @@ export default function Register() {
         },
         body: JSON.stringify({ name, email, password }),
       });
-      push("/");
+      push("/comfirm");
     } else {
       reload("/register");
-      console.log("aldaa");
+      alert("unmatched password  or invalid email!");
     }
   };
-  useEffect(() => {
-    getData();
-  }, []);
+
   return (
     <main className="w-full flex ">
       <div className=" w-[50vw] h-[100vh] flex justify-center items-center ">
@@ -51,7 +59,11 @@ export default function Register() {
               <p>Sign up below to create your Wallet account</p>
             </div>
           </div>
-          <form method="post" className="mt-7 flex flex-col gap-4">
+          <form
+            onSubmit={PostData}
+            method="post"
+            className="mt-7 flex flex-col gap-4"
+          >
             <input
               onChange={(event) => setName(event.target.value)}
               type="text"
@@ -80,10 +92,7 @@ export default function Register() {
               placeholder="Re-Password"
               className="w-full bg-slate-100 py-2 rounded-md px-2 border border-[#D1D5DB]"
             />
-            <button
-              onClick={PostData}
-              className="btn btn-primary min-w-[280px] text-xl"
-            >
+            <button className="btn btn-primary min-w-[280px] text-xl">
               Sign up
             </button>
           </form>

@@ -1,4 +1,4 @@
-export default function Comfirm2({ confrimBtn }) {
+export default function Comfirm2({ confirmBtn }) {
   return (
     <main className="flex justify-center">
       <div className="flex flex-col gap-[200px] mt-20 w-[300px]">
@@ -42,7 +42,7 @@ export default function Comfirm2({ confrimBtn }) {
             </div>
             <p className="text-sm">How much cash do you have in your wallet?</p>
 
-            <button onClick={confrimBtn} className="btn btn-primary w-full">
+            <button onClick={confirmBtn} className="btn btn-primary w-full">
               Confirm
             </button>
           </div>

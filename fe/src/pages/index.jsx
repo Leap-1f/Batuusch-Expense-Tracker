@@ -1,24 +1,28 @@
 import { data } from "autoprefixer";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 export default function Home() {
   const [allData, setAllData] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const getData = async () => {
-    const response = await fetch("http://localhost:8080/users");
-    const data = await response.json();
-    setAllData(data);
-  };
-  useEffect(() => {
-    getData();
-  }, [email, password]);
-  console.log(allData);
-  const confirmData = () => {
-    const filtredData = allData.filter((el)=>{
-      return el.email === email && el.password === password;
-    })
-    console.log(filtredData);
+  const { push, reload } = useRouter();
+  const PostData = async (event) => {
+    event.preventDefault();
+    const response = await fetch("http://localhost:8080/users/login", {
+      method: `POST`,
+      mode: "cors",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ email, password }),
+    });
+    if (response.status === 200) {
+      push("/dashboard");
+    } else {
+      alert("Invalid Email or Password");
+    }
   };
   return (
     <main className="w-full flex ">
@@ -32,9 +36,7 @@ export default function Home() {
             </div>
             <div className=" text-center flex flex-col gap-2">
               <h1 className="text-2xl font-bold">Welcome Back</h1>
-              <p onClick={confirmData}>
-                Welcome back, Please enter your details
-              </p>
+              <p>Welcome back, Please enter your details</p>
             </div>
           </div>
           <form
@@ -54,7 +56,9 @@ export default function Home() {
               placeholder="Password"
               className="w-full bg-slate-100 py-2 rounded-md px-2 border border-[#D1D5DB]"
             />
-            <button className="btn btn-primary text-xl">Log in</button>
+            <button onClick={PostData} className="btn btn-primary text-xl">
+              Log in
+            </button>
           </form>
           <Link href="/register">
             <div className="flex gap-3 justify-center mt-3">
