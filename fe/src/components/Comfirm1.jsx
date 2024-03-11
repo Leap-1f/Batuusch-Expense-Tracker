@@ -1,3 +1,5 @@
+import { useState } from "react";
+import {Currency} from "./myContext.jsx"
 export default function Comfirm1({ confirmBtn }) {
   return (
     <main className="flex justify-center">
@@ -23,15 +25,7 @@ export default function Comfirm1({ confirmBtn }) {
             />
             <h1 className=" font-bold text-2xl">Select base currency</h1>
             <div>
-              <select className="select select-bordered select-lg w-[500px] max-w-xs">
-                <option disabled selected>
-                  MNT - Mongolian Tugrik
-                </option>
-                <option value={"CNY"}>CNY - China Yuan</option>
-                <option value={"MNT"}> MNT - Mongolian Tugrik</option>
-                <option value={"USD"}>USD - USA Dollar</option>
-                <option value={"JPY"}>JPY - Japan Yen</option>
-              </select>
+              <Currency/>
             </div>
             <p className="text-sm">
               Your base currency should be the one you use most often. All
