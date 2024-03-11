@@ -1,34 +1,26 @@
 import express, { request, response } from "express";
-import { sql } from "./config/dataBase.js";
 import cors from "cors";
-import fs from "fs";
-import { userInfo } from "os";
+import { user } from "./source/router/user.js";
+import { signUp } from "./source/router/signup.js";
+import { sql } from "./config/dataBase.js";
+import bcrypt from "bcrypt";
 const port = 8080;
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use("/users" , userInfo)
-app.get("/users", async (request, response) => {
-  const data = await sql`SELECT * FROM users`;
-  console.log(data);
-  response.send(data);
-});
-app.post("/users/createtable", async (request, response) => {
-  const data =
-    await sql`CREATE TABLE users(id SERIAL PRIMARY KEY , name TEXT NOT NULL , email TEXT NOT NULL)`;
-  response.send(data);
-});
-app.post("/users/addData", async (request, response) => {
-  const inputData = request.body;
-  const { name, email, password } = inputData;
-  console.log(inputData);
-  const data =
-    await sql`INSERT INTO users(name , email) VALUES(${name} , ${email}) RETURNING *`;
-  response.send(data);
-});
-app.delete("/users/dropTable", async (request, response) => {
-  const data = await sql`DROP TABLE users`;
-  response.send(data);
+app.use("/users", user);
+app.use("/users/signup", signUp);
+app.post("/users/login", async (request, response) => {
+  const { email, password } = request.body;
+  const data = await sql`SELECT * FROM  users WHERE email=${email} `;
+  if (data.length !== 0) {
+    var unHashedPassword = await bcrypt.compare(password, data[0].password);
+  }
+  if (data.length !== 0 && unHashedPassword === true) {
+    return response.status(200).send({ message: "Successfully logged in!" });
+  } else {
+    response.status(400).send({ message: "Wrong Email or Password" });
+  }
 });
 app.listen(port, () => {
   console.log(`http://localhost:${8080}/`);
