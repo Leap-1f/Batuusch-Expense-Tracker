@@ -23,7 +23,7 @@ app.post("/users/login", async (request, response) => {
   }
 });
 app.post("/users/currency", async (request, response) => {
-  const { currency } = request.body;
+  const { currency } =await request.body;
   const data = await sql`UPDATE users
   SET currency_type = ${currency}
   WHERE email = 'batuusch@gmail.com';`;

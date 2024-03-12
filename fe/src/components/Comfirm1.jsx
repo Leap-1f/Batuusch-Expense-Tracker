@@ -10,7 +10,7 @@ export default function Comfirm1({ setConfirmNunber }) {
         Accept: "application/json, text/plain, */*",
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({currency}),
+      body: JSON.stringify({ currency}),
     });
   };
   return (

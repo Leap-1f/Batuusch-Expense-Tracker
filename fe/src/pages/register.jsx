@@ -37,26 +37,12 @@ export default function Register() {
         },
         body: JSON.stringify({ name, email, password }),
       });
-
       push("/comfirm");
-      // PostData2()
     } else {
       reload("/register");
       alert("unmatched password  or invalid email!");
     }
   };
-  // const PostData2 = async (event) => {
-  //   const response = await fetch("http://localhost:8080/users/currency", {
-  //     method: `POST`,
-  //     mode: "cors",
-  //     headers: {
-  //       Accept: "application/json, text/plain, */*",
-  //       "Content-Type": "application/json",
-  //     },
-  //     body: JSON.stringify({email}),
-  //   });
-  // };
-
   return (
     <main className="w-full flex ">
       <div className=" w-[50vw] h-[100vh] flex justify-center items-center ">
