@@ -1,6 +1,18 @@
 import { useState } from "react";
-import {Currency} from "./myContext.jsx"
-export default function Comfirm1({ confirmBtn }) {
+export default function Comfirm1({ setConfirmNunber }) {
+  const [currency, setCurrency] = useState("MNT");
+  const confirmBtn = async () => {
+    setConfirmNunber(2);
+    const response = await fetch("http://localhost:8080/users/currency", {
+      method: `POST`,
+      mode: "cors",
+      headers: {
+        Accept: "application/json, text/plain, */*",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({currency}),
+    });
+  };
   return (
     <main className="flex justify-center">
       <div className="flex flex-col gap-[200px] mt-20 w-[300px]">
@@ -25,7 +37,21 @@ export default function Comfirm1({ confirmBtn }) {
             />
             <h1 className=" font-bold text-2xl">Select base currency</h1>
             <div>
-              <Currency/>
+              {" "}
+              <select
+                onChange={(e) => {
+                  setCurrency(e.target.value);
+                }}
+                className="select select-bordered select-lg w-[500px] max-w-xs"
+              >
+                <option disabled selected>
+                  MNT - Mongolian Tugrik
+                </option>
+                <option value={"CNY"}>CNY - China Yuan</option>
+                <option value={"MNT"}> MNT - Mongolian Tugrik</option>
+                <option value={"USD"}>USD - USA Dollar</option>
+                <option value={"JPY"}>JPY - Japan Yen</option>
+              </select>
             </div>
             <p className="text-sm">
               Your base currency should be the one you use most often. All

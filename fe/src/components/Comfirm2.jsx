@@ -1,4 +1,10 @@
-export default function Comfirm2({ confirmBtn }) {
+import { useState } from "react";
+export default function Comfirm2({ setConfirmNunber }) {
+
+  const confirmBtn = async () => {
+    setConfirmNunber(3);
+
+  };
   return (
     <main className="flex justify-center">
       <div className="flex flex-col gap-[200px] mt-20 w-[300px]">

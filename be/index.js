@@ -22,6 +22,13 @@ app.post("/users/login", async (request, response) => {
     response.status(400).send({ message: "Wrong Email or Password" });
   }
 });
+app.post("/users/currency", async (request, response) => {
+  const { currency } = request.body;
+  const data = await sql`UPDATE users
+  SET currency_type = ${currency}
+  WHERE email = 'batuusch@gmail.com';`;
+  response.status(201).send(data);
+});
 app.listen(port, () => {
   console.log(`http://localhost:${8080}/`);
 });

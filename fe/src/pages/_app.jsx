@@ -1,9 +1,9 @@
 import "@/styles/globals.css";
-import { UserContext } from "../components/myContext.jsx";
+import UserDataProvider from "../components/myContext.js";
 export default function App({ Component, pageProps }) {
   return (
-    <UserContext.Provider>
+    <UserDataProvider>
       <Component {...pageProps} />;
-    </UserContext.Provider>
+    </UserDataProvider>
   );
 }
