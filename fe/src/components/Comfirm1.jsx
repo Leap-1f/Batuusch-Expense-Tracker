@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 export default function Comfirm1({ setConfirmNunber }) {
   const [currency, setCurrency] = useState("MNT");
   const confirmBtn = async () => {
     setConfirmNunber(2);
-    const response = await fetch("http://localhost:8080/users/currency", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_ENDPOINT}/users/currency`, {
       method: `POST`,
       mode: "cors",
       headers: {
@@ -58,7 +58,6 @@ export default function Comfirm1({ setConfirmNunber }) {
               transaction in other currencies will be calculated based on this
               one{" "}
             </p>
-
             <button onClick={confirmBtn} className="btn btn-primary w-full">
               Confirm
             </button>

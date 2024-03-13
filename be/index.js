@@ -23,10 +23,10 @@ app.post("/users/login", async (request, response) => {
   }
 });
 app.post("/users/currency", async (request, response) => {
-  const { currency } =await request.body;
+  const { currency} = await request.body;
   const data = await sql`UPDATE users
   SET currency_type = ${currency}
-  WHERE email = 'batuusch@gmail.com';`;
+  WHERE createdat IN (SELECT max(createdat) FROM users);`;
   response.status(201).send(data);
 });
 app.listen(port, () => {

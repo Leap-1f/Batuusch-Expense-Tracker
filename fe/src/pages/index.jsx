@@ -9,7 +9,7 @@ export default function Home() {
   const { push, reload } = useRouter();
   const PostData = async (event) => {
     event.preventDefault();
-    const response = await fetch("http://localhost:8080/users/login", {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_ENDPOINT}}/users/login`, {
       method: `POST`,
       mode: "cors",
       headers: {
