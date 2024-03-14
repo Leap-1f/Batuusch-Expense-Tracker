@@ -9,15 +9,18 @@ export default function Home() {
   const { push, reload } = useRouter();
   const PostData = async (event) => {
     event.preventDefault();
-    const response = await fetch(`${process.env.NEXT_PUBLIC_ENDPOINT}}/users/login`, {
-      method: `POST`,
-      mode: "cors",
-      headers: {
-        Accept: "application/json, text/plain, */*",
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ email, password }),
-    });
+    const response = await fetch(
+      `${process.env.NEXT_PUBLIC_ENDPOINT}}/users/login`,
+      {
+        method: `POST`,
+        mode: "cors",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      }
+    );
     if (response.status === 200) {
       push("/dashboard");
     } else {
@@ -25,8 +28,8 @@ export default function Home() {
     }
   };
   return (
-    <main className="w-full flex ">
-      <div className=" w-[50vw] h-[100vh] flex justify-center items-center ">
+    <main className="flex  w-[100vw]">
+      <div className=" w-[50vw] h-[100vh] flex justify-center items-center container ">
         <div className="w-[35%]">
           <div className="flex flex-col gap-6">
             {" "}

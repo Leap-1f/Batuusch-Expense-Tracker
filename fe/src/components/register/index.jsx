@@ -84,7 +84,6 @@ export const FormTag = () => {
           Sign up
         </button>
       </form>
-      <div className=" hidden"></div>
     </>
   );
 };
