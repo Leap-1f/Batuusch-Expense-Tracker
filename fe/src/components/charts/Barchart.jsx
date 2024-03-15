@@ -38,7 +38,7 @@ function BarChart() {
   return (
     <div className="w-[48%]">
       <div className="  flex mt-10">
-        <div className="border border-white rounded-xl  w-[full] h-fit  shadow-xl">
+        <div className="border border-white rounded-xl  w-full h-fit  shadow-xl">
           <canvas id="myChart"></canvas>
         </div>
       </div>

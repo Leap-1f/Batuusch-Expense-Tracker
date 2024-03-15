@@ -1,3 +1,4 @@
+import Link from "next/link";
 import BarChart from "@/components/charts/Barchart";
 import Donutchart from "@/components/charts/Donutchart";
 export default function Dashboard() {
@@ -9,10 +10,14 @@ export default function Dashboard() {
           <div className="flex gap-10">
             <img src="./Vector.png" alt="" className="h-8" />
             <h1 className="text-xl">Dashbourd</h1>
-            <h1 className="text-xl">Records</h1>
+            <Link href="/records">
+              <h1 className="text-xl cursor-pointer">Records</h1>
+            </Link>
           </div>
           <div className="flex gap-10">
-            <button className="btn btn-primary text-xl"> + Record</button>
+            <Link href="/records">
+              <button className="btn btn-primary text-xl"> + Record</button>
+            </Link>
             <img src="./Placeholder.jpg" alt="" className="" />
           </div>
         </header>
