@@ -21,7 +21,7 @@ export default function Dashboard() {
             <img src="./Placeholder.jpg" alt="" className="" />
           </div>
         </header>
-        <div className="mt-20 flex justify-between w-full">
+        <div className="mt-10 flex justify-between w-full">
           <img src="./card.png" alt="" className="w-[32%]" />
           <div className="border w-[32%] h-[27`0px] rounded-2xl flex flex-col bg-white justify-around">
             <div className="flex gap-3 w-full mt-3 border border-t-white border-l-white border-r-white border-b-grey pb-3">

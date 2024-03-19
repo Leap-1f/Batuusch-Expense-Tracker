@@ -10,7 +10,7 @@ export default function Home() {
   const PostData = async (event) => {
     event.preventDefault();
     const response = await fetch(
-      `${process.env.NEXT_PUBLIC_ENDPOINT}}/users/login`,
+      `${process.env.NEXT_PUBLIC_ENDPOINT}/users/login`,
       {
         method: `POST`,
         mode: "cors",
