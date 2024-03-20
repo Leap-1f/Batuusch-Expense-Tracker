@@ -1,9 +1,10 @@
 import { array, date } from "yup";
 import Link from "next/link";
-import  Modals from "@/components/register/Modals";
-import { useState } from "react";
+import Modals from "@/components/register/Modals";
+import { useState, useEffect } from "react";
 export default function Record() {
   const [hidden, setHidden] = useState("hidden");
+  const [confirmNunber, setConfirmNunber] = useState(1);
   const categoryArray = [
     "Food & Drinks",
     "Shopping",
@@ -44,7 +45,7 @@ export default function Record() {
           <div className="flex gap-10">
             <button
               onClick={() => {
-                setHidden("block");
+                setHidden("block"), setConfirmNunber(1);
               }}
               className="btn btn-primary text-xl"
             >
@@ -65,10 +66,10 @@ export default function Record() {
               <button
                 className="btn btn-primary w-full"
                 onClick={() => {
-                  setHidden("block");
+                  setHidden("block"), setConfirmNunber(1);
                 }}
               >
-                + Add
+                + Add 
               </button>
               <label className="input input-bordered flex items-center gap-2">
                 <input type="text" className="grow" placeholder="Search" />
@@ -262,7 +263,7 @@ export default function Record() {
             </div>
           </div>
           {/* ddd */}
-          <Modals />
+          <Modals setConfirmNunber={setConfirmNunber}  confirmNunber={confirmNunber}/>
         </div>
       </div>
     </div>

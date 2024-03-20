@@ -1,7 +1,9 @@
 import { useState } from "react";
 export const ModalBtn1 = ({ setConfirmNunber }) => {
   const [hiddenModal, setHiddenModal] = useState("hidden");
-
+const handler=()=>{
+  setConfirmNunber(3)
+}
   const categoryArray = [
     {
       img: "./house2.png",
@@ -69,7 +71,7 @@ export const ModalBtn1 = ({ setConfirmNunber }) => {
             Choose category
           </div>
           <div className={`absolute top-20 w-full ${hiddenModal}`}>
-            <div className="flex gap-5 bg-white pb-2 cursor-pointer">
+            <div className="flex gap-5 bg-white pb-2 cursor-pointer" onClick={handler}>
               <img src="./plus.png" alt="" />
               <p>Add Category</p>
             </div>

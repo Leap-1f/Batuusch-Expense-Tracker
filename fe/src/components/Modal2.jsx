@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 export const ModalBtn2 = ({ setConfirmNunber }) => {
   const [hiddenModal, setHiddenModal] = useState("hidden");
+  const handler = () => {
+    setConfirmNunber(3);
+  };
   const categoryArray = [
     {
       img: "./house2.png",
@@ -67,7 +70,10 @@ export const ModalBtn2 = ({ setConfirmNunber }) => {
             Choose category
           </div>
           <div className={`absolute top-20 w-full ${hiddenModal}`}>
-            <div className="flex gap-5 bg-white pb-2 cursor-pointer">
+            <div
+              className="flex gap-5 bg-white pb-2 cursor-pointer"
+              onClick={handler}
+            >
               <img src="./plus.png" alt="" />
               <p>Add Category</p>
             </div>
@@ -94,9 +100,7 @@ export const ModalBtn2 = ({ setConfirmNunber }) => {
             {" "}
             <h1 className="py-1">Date</h1>
             <select className="select select-bordered w-[100%]">
-              <option disabled selected>
-
-              </option>
+              <option disabled selected></option>
               <option>Han Solo</option>
               <option>Greedo</option>
             </select>
