@@ -1,8 +1,7 @@
-
 import { useState, useEffect } from "react";
+import { arr, colorArr } from "./Svg";
 export default function MiniModal({ setConfirmNunber }) {
   const [hidden, setHidden] = useState("hidden");
-  const arr = [];
   return (
     <div className="w-ful flex flex-col items-center h-full mt-10 gap-10">
       <div className="w-full flex gap-5 justify-center">
@@ -16,8 +15,24 @@ export default function MiniModal({ setConfirmNunber }) {
           >
             Choose shape
           </div>
-          <div className={`w-full absolute left-0 top-10 ${hidden}`}>
-
+          <div
+            className={`w-full absolute left-0 top-13 flex  flex-wrap gap-5 bg-white ${hidden}`}
+          >
+            {arr.map((el) => {
+              return (
+                <div
+                  className="bg-white pb-2"
+                  onClick={() => {
+                    setHidden("hidden");
+                  }}
+                >
+                  {el}
+                </div>
+              );
+            })}
+            {colorArr.map((el) => {
+              return <div>{el}</div>;
+            })}
           </div>
         </div>
         <input

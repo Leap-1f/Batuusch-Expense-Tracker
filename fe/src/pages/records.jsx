@@ -1,7 +1,7 @@
 import { array, date } from "yup";
 import Link from "next/link";
 import Modals from "@/components/register/Modals";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 export default function Record() {
   const [hidden, setHidden] = useState("hidden");
   const [confirmNunber, setConfirmNunber] = useState(1);

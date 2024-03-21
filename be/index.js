@@ -17,15 +17,23 @@ app.post("/users/login", async (request, response) => {
     var unHashedPassword = await bcrypt.compare(password, data[0].password);
   }
   if (data.length !== 0 && unHashedPassword === true) {
-    return response.status(200).send({ message: "Successfully logged in!" });
+    return response.status(200).send({ message: "Successfully logged in!" })
   } else {
     response.status(400).send({ message: "Wrong Email or Password" });
   }
+
 });
 app.post("/users/currency", async (request, response) => {
-  const { currency} = await request.body;
+  const { currency } = await request.body;
   const data = await sql`UPDATE users
   SET currency_type = ${currency}
+  WHERE createdat IN (SELECT max(createdat) FROM users);`;
+  response.status(201).send(data);
+});
+app.post("/users/balance", async (request, response) => {
+  const { balance } = await request.body;
+  const data = await sql`UPDATE users
+  SET balance = ${balance}
   WHERE createdat IN (SELECT max(createdat) FROM users);`;
   response.status(201).send(data);
 });

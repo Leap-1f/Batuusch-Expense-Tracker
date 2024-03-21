@@ -23,7 +23,7 @@ export default function Dashboard() {
         </header>
         <div className="mt-10 flex justify-between w-full">
           <img src="./card.png" alt="" className="w-[32%]" />
-          <div className="border w-[32%] h-[27`0px] rounded-2xl flex flex-col bg-white justify-around">
+          <div className="border w-[32%] h-[250px] rounded-2xl flex flex-col bg-white justify-around">
             <div className="flex gap-3 w-full mt-3 border border-t-white border-l-white border-r-white border-b-grey pb-3">
               <img src="./greendot.png" alt="" className="h-2 mt-[10px] ml-2" />
               <p className="text-xl font-bold">Your income</p>
@@ -37,7 +37,7 @@ export default function Dashboard() {
               <p>32% from last month</p>
             </div>
           </div>
-          <div className="border w-[32%] h-[270px] rounded-2xl flex flex-col bg-white justify-around">
+          <div className="border w-[32%] h-[250px] rounded-2xl flex flex-col bg-white justify-around">
             <div className="flex gap-3 w-full mt-3 border border-t-white border-l-white border-r-white border-b-grey pb-3">
               <img src="./bluedot.png" alt="" className="h-2 mt-[10px] ml-2" />
               <p className="text-xl font-bold">Total Expenses</p>

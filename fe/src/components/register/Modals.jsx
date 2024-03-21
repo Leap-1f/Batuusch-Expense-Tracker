@@ -3,7 +3,6 @@ import { ModalBtn2 } from "@/components/Modal2";
 import { useState  , useEffect} from "react";
 import MiniModal from "../MiniModal";
 export default function Modals({setConfirmNunber , confirmNunber}) {
-
   switch (confirmNunber) {
     case 1:
       return <ModalBtn1 setConfirmNunber={setConfirmNunber} />;
