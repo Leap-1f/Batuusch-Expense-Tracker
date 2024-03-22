@@ -17,14 +17,14 @@ function BarChart() {
         ],
         datasets: [
           {
-            data: [0, 1000000, 2000000],
+            data: [0, 1000000, 2000000,300000],
             label: "Income",
             borderColor: "#84CC16",
             backgroundColor: "#84CC16",
             borderWidth: 2,
           },
           {
-            data: [1000000, 2000000, 50000],
+            data: [1000000, 2000000, 50000,100000],
             label: "Expenses",
             borderColor: "#F97316",
             backgroundColor: "#F97316",

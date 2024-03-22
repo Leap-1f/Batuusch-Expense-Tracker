@@ -1,6 +1,17 @@
 import Link from "next/link";
 import { FormTag } from "../components/register/index.jsx";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 export default function Register() {
+  const router = useRouter();
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    if (id) {
+      router.push("/Comfirm");
+    } else {
+      router.push("/");
+    }
+  }, []);
   return (
     <main className="w-full flex ">
       <div className=" w-[50vw] h-[100vh] flex justify-center items-center ">

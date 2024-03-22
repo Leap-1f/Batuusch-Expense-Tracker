@@ -17,11 +17,11 @@ app.post("/users/login", async (request, response) => {
     var unHashedPassword = await bcrypt.compare(password, data[0].password);
   }
   if (data.length !== 0 && unHashedPassword === true) {
-    return response.status(200).send({ message: "Successfully logged in!" })
+    console.log(data[0]);
+    return response.status(200).send(JSON.stringify(data[0].id));
   } else {
     response.status(400).send({ message: "Wrong Email or Password" });
   }
-
 });
 app.post("/users/currency", async (request, response) => {
   const { currency } = await request.body;

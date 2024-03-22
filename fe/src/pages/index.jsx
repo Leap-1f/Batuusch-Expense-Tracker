@@ -3,6 +3,15 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 export default function Home() {
+  const router = useRouter();
+  useEffect(() => {
+     const id = localStorage.getItem('id');
+     if (id) {
+       router.push('/Comfirm');
+     } else {
+       router.push('/');
+     }
+  }, []);
   const [allData, setAllData] = useState([]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -21,8 +30,10 @@ export default function Home() {
         body: JSON.stringify({ email, password }),
       }
     );
+    const res = await response.json();
     if (response.status === 200) {
       push("/dashboard");
+      localStorage.setItem("id", res);
     } else {
       alert("Invalid Email or Password");
     }

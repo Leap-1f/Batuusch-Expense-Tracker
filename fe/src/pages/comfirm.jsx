@@ -1,8 +1,18 @@
 import Comfirm1 from "@/components/Comfirm1";
 import Comfirm2 from "@/components/Comfirm2";
 import Comfirm3 from "@/components/Comfirm3";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useRouter } from "next/router";
 export default function Comfirm() {
+  const router = useRouter();
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    if (id) {
+      router.push("/Comfirm");
+    } else {
+      router.push("/");
+    }
+  }, []);
   const [confirmNunber, setConfirmNunber] = useState(1);
   switch (confirmNunber) {
     case 1:

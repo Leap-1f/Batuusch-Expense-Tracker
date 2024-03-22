@@ -2,8 +2,24 @@ import { array, date } from "yup";
 import Link from "next/link";
 import Modals from "@/components/register/Modals";
 import { useState } from "react";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 export default function Record() {
+  const router = useRouter();
+  useEffect(() => {
+    const id = localStorage.getItem("id");
+    if (id) {
+      router.push("/Comfirm");
+    } else {
+      router.push("/");
+    }
+  }, []);
+  const logOut = () => {
+    localStorage.removeItem("id");
+    router.push("/");
+  };
   const [hidden, setHidden] = useState("hidden");
+  const [hiddenn, setHiddenn] = useState("hidden");
   const [confirmNunber, setConfirmNunber] = useState(1);
   const categoryArray = [
     "Food & Drinks",
@@ -30,6 +46,7 @@ export default function Record() {
     "Food & Drinks",
     "Food & Drinks",
   ];
+
   return (
     <div className="w-[100vw] flex justify-center bg-slate-50 h-fit">
       {" "}
@@ -38,25 +55,39 @@ export default function Record() {
           <div className="flex gap-10">
             <img src="./Vector.png" alt="" className="h-8" />
             <Link href="/dashboard">
-              <h1 className="text-xl cursor-pointer">Dashbourd</h1>
+              <h1 className="text-xl">Dashbourd</h1>
             </Link>
             <h1 className="text-xl cursor-pointer">Records</h1>
           </div>
-          <div className="flex gap-10">
-            <button
-              onClick={() => {
-                setHidden("block"), setConfirmNunber(1);
-              }}
-              className="btn btn-primary text-xl"
-            >
+          <div className="flex gap-10 items-center ">
+            <Link href="/records">
+              <button
+                onClick={() => {
+                  setHidden("block"), setConfirmNunber(1);
+                }}
+                className="btn btn-primary text-xl w-[120px]"
+              >
+                {" "}
+                + Record
+              </button>
+            </Link>
+            <div className=" relative w-full">
               {" "}
-              + Record
-            </button>
-            <img
-              src="./Placeholder.jpg"
-              alt=""
-              className="max-w-15 max-h-15 "
-            />
+              <img
+                onClick={() => {
+                  setHiddenn("block");
+                }}
+                src="./Placeholder.jpg"
+                alt=""
+                className=""
+              />
+              <button
+                onClick={logOut}
+                className={`btn absolute top-12 w-[100px] right-0 ${hiddenn}`}
+              >
+                Log out
+              </button>
+            </div>
           </div>
         </header>
         <div className="flex justify-between">
@@ -69,7 +100,7 @@ export default function Record() {
                   setHidden("block"), setConfirmNunber(1);
                 }}
               >
-                + Add 
+                + Add
               </button>
               <label className="input input-bordered flex items-center gap-2">
                 <input type="text" className="grow" placeholder="Search" />
@@ -136,7 +167,9 @@ export default function Record() {
                   })}
                   <div className="flex gap-10 cursor-pointer">
                     <img src="./plus.png" alt="" />
-                    <h1>Add Category</h1>
+                    <h1   onClick={() => {
+                  setHidden("block"), setConfirmNunber(1);
+                }}>Add Category</h1>
                   </div>
                 </div>
               </div>
@@ -242,7 +275,7 @@ export default function Record() {
         onClick={() => {
           setHidden("hidden");
         }}
-        className={`w-[100vw] h-full absolute bg-opacity-40 bg-black ${hidden} flex justify-center items-center z-[1]`}
+        className={`w-[100vw] h-[200vh] absolute bg-opacity-40 bg-black ${hidden} flex justify-center items-center z-[1]`}
       ></div>
       <div
         id="secondScreen"
@@ -263,7 +296,10 @@ export default function Record() {
             </div>
           </div>
           {/* ddd */}
-          <Modals setConfirmNunber={setConfirmNunber}  confirmNunber={confirmNunber}/>
+          <Modals
+            setConfirmNunber={setConfirmNunber}
+            confirmNunber={confirmNunber}
+          />
         </div>
       </div>
     </div>

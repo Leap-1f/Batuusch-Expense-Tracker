@@ -1,4 +1,15 @@
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 export default function Louding() {
+  const router = useRouter();
+  useEffect(() => {
+     const id = localStorage.getItem('id');
+     if (id) {
+       router.push('/Comfirm');
+     } else {
+       router.push('/');
+     }
+  }, []);
   return (
     <main className="w-[100vw] h-[100vh] flex justify-center items-center">
       <div className=" flex flex-col gap-5">
