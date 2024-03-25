@@ -9,7 +9,7 @@ export default function Record() {
   useEffect(() => {
     const id = localStorage.getItem("id");
     if (id) {
-      router.push("/Comfirm");
+      router.push("/records");
     } else {
       router.push("/");
     }

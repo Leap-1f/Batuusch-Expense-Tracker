@@ -7,7 +7,7 @@ export default function Home() {
   useEffect(() => {
      const id = localStorage.getItem('id');
      if (id) {
-       router.push('/Comfirm');
+       router.push('/');
      } else {
        router.push('/');
      }
