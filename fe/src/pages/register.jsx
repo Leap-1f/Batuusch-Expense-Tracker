@@ -7,7 +7,7 @@ export default function Register() {
   useEffect(() => {
     const id = localStorage.getItem("id");
     if (id) {
-      router.push("/Comfirm");
+      router.push("/register");
     } else {
       router.push("/");
     }

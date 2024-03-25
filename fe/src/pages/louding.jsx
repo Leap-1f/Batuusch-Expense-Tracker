@@ -5,7 +5,7 @@ export default function Louding() {
   useEffect(() => {
      const id = localStorage.getItem('id');
      if (id) {
-       router.push('/Comfirm');
+       router.push('/louding');
      } else {
        router.push('/');
      }
